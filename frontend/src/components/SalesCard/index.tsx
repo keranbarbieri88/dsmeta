@@ -1,26 +1,49 @@
-import NotificationButton from '../NotificationButton'
-import './styles.css'
+import NotificationButton from '../NotificationButton';
+import './styles.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useState } from 'react';
 
 function SalesCard() {
+
+    const max = new Date();
+    /*- no segundo new Date() estamos criando o objeto
+    - o método setDate altera a data do objeto criado, passando a data atual new Date() pelo método .getDate() 
+    menos a quantidade que dias que quiser*/
+    const min = new Date(new Date().setDate(new Date().getDate() - 365));
+
+
+    /*- minDate variável que guarda o dado, setMinDate método que altera o dado, useState método que guarda o estado 
+   do componente
+   - new Date() pega a data atual
+   - uando declaramos dados compostos colocamos entre []*/
+    const [minDate, setMinDate] = useState(min);
+    const [maxDate, setMaxDate] = useState(max);
+
+
+
     return (
         <>
             <div className="dsmeta-card">
                 <h2 className="dsmeta-sales-title">Vendas</h2>
                 <div>
                     <div className="dsmeta-form-control-container">
+                        {/*- quando fazemos comentários no HTML utilizando a biblioteca JavaScript
+                        React precisamos colocar entra chaves
+                         - onChange é o evento que identifica a alteração do estado dentro do componente 
+                         - o setMinDate é o método que altera o estado
+                          - date é o argumento da função*/}
                         <DatePicker
-                            selected={new Date()}
-                            onChange={(date: Date) => { }}
+                            selected={minDate}
+                            onChange={(date: Date) => setMinDate(date)}
                             className="dsmeta-form-control"
                             dateFormat="dd/MM/yyyy"
                         />
                     </div>
                     <div className="dsmeta-form-control-container">
                         <DatePicker
-                            selected={new Date()}
-                            onChange={(date: Date) => { }}
+                            selected={maxDate}
+                            onChange={(date: Date) => setMaxDate(date)}
                             className="dsmeta-form-control"
                             dateFormat="dd/MM/yyyy"
                         />
@@ -93,4 +116,4 @@ function SalesCard() {
     )
 }
 
-export default SalesCard
+export default SalesCard;
