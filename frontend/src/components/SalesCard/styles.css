@@ -5,7 +5,7 @@
 }
 
 .dsmeta-sales-title {
-    color: #676fff;
+    color: #3ba0ff;
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -59,7 +59,7 @@
     background-color: #242c3b;
 }
 
-.dsmeta-red-btn-container {
+.dsmeta-blue-btn-container {
     display: flex;
     justify-content: center;
 }
