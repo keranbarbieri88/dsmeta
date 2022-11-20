@@ -1,10 +1,13 @@
 import Header from "./components/Header";
 import SalesCard from "./components/SalesCard";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     //é necessário colocar as tags entre <></> (fragment) porque o React exige assim.
     <>
+      <ToastContainer />
       <Header />
       <main>
         <section id="sales">
@@ -14,9 +17,6 @@ function App() {
         </section>
       </main>
     </>
-
-
-
   )
 }
 
