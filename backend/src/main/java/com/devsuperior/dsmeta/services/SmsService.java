@@ -31,15 +31,15 @@ public class SmsService {
 
 	/*método de teste para envio de mensagem pego na documentação da Twilio*/
 	public void sendSms(Long saleId) {
-		/*fará a busca da venda por id*/
+		/*fará a busca da venda por id no banco de dados*/
 		Sale sale = saleRepository.findById(saleId).get();
 		
 		/*retorna o número do mês e o ano*/
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 		
 		/*mensagem com os dados da venda, passando nome do vendedor, mês/ano e valor da venda*/
-		String msg = "O Vendedor " + sale.getSellerName() + "foi destaque em " + date
-				+ " com um total de R$ " + String.format("%.2f", sale.getAmount()) ;
+		String msg = "O vendedor " + sale.getSellerName() + "foi destaque em " + date 
+				+ "com um total de R$ " + String.format("%.2f", sale.getAmount());
 
 		Twilio.init(twilioSid, twilioKey);
 
