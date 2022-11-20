@@ -30,11 +30,15 @@ function SalesCard() {
     /*react hook que utiliza como parametro uma função como primeiro argumento e uma lista como segundo argumento
     - a função setSales será responsável por atualizar o useStates com o valor que retornou da API */
     useEffect(() => {
-        axios.get(`${BASE_URL}/sales`)
+        /*formata a data pegando apenas a fatia necessária*/
+        const dmin = minDate.toISOString().slice(0, 10);
+        const dmax = maxDate.toISOString().slice(0, 10);
+
+        axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
             .then(response => {
                 setSales(response.data.content);
             });
-    }, []);
+    }, [minDate, maxDate]);
 
 
     return (
