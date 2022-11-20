@@ -1,5 +1,8 @@
 import Header from "./components/Header";
 import SalesCard from "./components/SalesCard";
+
+/*Biblioteca React que permite adicionar notificações do sistema ao seu aplicativo com facilidade 
+e também pode ser usada para definir notificações e alertas*/
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
