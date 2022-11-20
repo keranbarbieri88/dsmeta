@@ -27,13 +27,13 @@ function SalesCard() {
     nome da função que altera o dado, setSales*/
     const [sales, setSales] = useState<Sale[]>([]);
 
-    /*react hook que utiliza como parametro uma função como primeiro argumento e uma lista como segundo argumento
-    - a função setSales será responsável por atualizar o useStates com o valor que retornou da API */
+    /*react hook que utiliza como parametro uma função como primeiro argumento e uma lista como segundo argumento*/
     useEffect(() => {
         /*formata a data pegando apenas a fatia necessária*/
         const dmin = minDate.toISOString().slice(0, 10);
         const dmax = maxDate.toISOString().slice(0, 10);
 
+        /*a função setSales será responsável por atualizar o useStates com o valor que retornou da API */
         axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
             .then(response => {
                 setSales(response.data.content);
@@ -94,7 +94,7 @@ function SalesCard() {
                                         <td>R$ {sale.amount.toFixed(2)}</td>
                                         <td>
                                             <div className="dsmeta-blue-btn-container">
-                                                <NotificationButton />
+                                                <NotificationButton saleId={sale.id} />
                                             </div>
                                         </td>
                                     </tr>
